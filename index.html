@@ -1,0 +1,50 @@
+<html ng-app="example">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<body ng-controller="myApp as app">
+    <h1>{{ app.exampleString }}</h1>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="person in app.peopleList">
+                        <th scope="row">{{ person.id }}</th>
+                        <td>{{ person.name }}</td>
+                        <td>{{ person.age }}</td>
+                        <td>
+                            <button class="btn btn-default" ng-click="app.personRemove(group.id)">Remover</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><input type="text" ng-model="app.personNewName"></td>
+                        <td><input type="number" ng-model="app.personNewAge"></td>
+                        <td><button class="btn btn-default" ng-click="app.personAdd()">Adicionar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <uib-progressbar max="20" value="app.peopleList.length"><span style="color:white; white-space:nowrap;">{{app.peopleList.length}} / 20</span></uib-progressbar>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/js/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
